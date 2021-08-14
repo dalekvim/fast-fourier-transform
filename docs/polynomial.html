@@ -162,7 +162,7 @@
 <p>This file contains the Polynomial class which represents polynomials with the a list of coefficients.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fft.polynomial.Polynomial">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fft.polynomial.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fft.polynomial.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class represents polynomials as a list.</p>
 <p>This class has been designed for quick and easy access to polynomials:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fft.Polynomial</span> <span class="k">as</span> <span class="nn">Poly</span>
@@ -222,6 +222,22 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Returns true if the polynomials are equal and false otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fft.polynomial.Polynomial.horners_rule">
+<span class="sig-name descname"><span class="pre">horners_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">complex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">complex</span></span></span><a class="headerlink" href="#fft.polynomial.Polynomial.horners_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates this polynomial using Horner’s Rule.</p>
+<p>Horner’s Rule allows polynomials to be evaluated in linear time, whereas evaluating term by term would have a
+polynomial time complexity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – Input to the polynomial.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The polynomial evaluated at the input.</p>
 </dd>
 </dl>
 </dd></dl>

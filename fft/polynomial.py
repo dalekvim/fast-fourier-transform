@@ -34,7 +34,11 @@ class Polynomial(list):
     """
 
     def __init__(self, _list):
+        """Initializes the polynomial as a list of coefficients."""
+
         super(Polynomial, self).__init__(_list)
+        # The degree is the largest power term with nonzero coefficient.
+        # It is calculated by first striping away any trailing zeros and
         self.degree = len(self.strip_zeros()) - 1
 
     def __call__(self, x: complex) -> complex:
@@ -43,6 +47,7 @@ class Polynomial(list):
         :param x: Input to the polynomial.
         :return: The polynomial evaluated at x.
         """
+
         return self.horners_rule(x)
 
     @staticmethod
@@ -58,6 +63,7 @@ class Polynomial(list):
 
         :return: The sum of the two polynomials.
         """
+
         polynomial_1, polynomial_2 = Polynomial.adjust(polynomial_1, polynomial_2)
 
         return list(map(add, polynomial_1, polynomial_2))
@@ -70,6 +76,7 @@ class Polynomial(list):
 
         :return: The two polynomials adjusted to have the same size.
         """
+
         Polynomial.strip_zeros_l([polynomial_1, polynomial_2])
 
         while len(polynomial_1) < len(polynomial_2):
@@ -85,6 +92,7 @@ class Polynomial(list):
 
         :return: Returns true if the polynomials are equal and false otherwise.
         """
+
         polynomial_1, polynomial_2 = Polynomial.strip_zeros_l([polynomial_1, polynomial_2])
 
         if polynomial_1 == polynomial_2:
@@ -92,6 +100,14 @@ class Polynomial(list):
         return False
 
     def horners_rule(self, x: complex) -> complex:
+        """Evaluates this polynomial using Horner's Rule.
+
+        Horner's Rule allows polynomials to be evaluated in linear time, whereas evaluating term by term would have a
+        polynomial time complexity.
+
+        :param x: Input to the polynomial.
+        :return: The polynomial evaluated at the input.
+        """
         subtotal = 0
         for coefficient in reversed(self):
             subtotal = coefficient + x * subtotal
