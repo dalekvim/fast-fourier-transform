@@ -1,0 +1,5 @@
+Polynomial
+**********
+
+.. automodule:: fft.helpers.polynomial
+    :members:
