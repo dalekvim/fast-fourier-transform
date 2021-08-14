@@ -33,9 +33,9 @@ class Polynomial(list):
         Compares the two input polynomials to check if they are the same.
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, _list):
+        super(Polynomial, self).__init__(_list)
         self.degree = len(self.strip_zeros()) - 1
-        super(Polynomial, self).__init__(*args, **kwargs)
 
     def __call__(self, x: complex) -> complex:
         """Element wise multiplies the coefficients of this polynomial with powers of x.
@@ -59,6 +59,7 @@ class Polynomial(list):
         :return: The sum of the two polynomials.
         """
         polynomial_1, polynomial_2 = Polynomial.adjust(polynomial_1, polynomial_2)
+
         return list(map(add, polynomial_1, polynomial_2))
 
     @staticmethod
@@ -69,6 +70,8 @@ class Polynomial(list):
 
         :return: The two polynomials adjusted to have the same size.
         """
+        Polynomial.strip_zeros_l([polynomial_1, polynomial_2])
+
         while len(polynomial_1) < len(polynomial_2):
             polynomial_1.append(0)
         while len(polynomial_1) > len(polynomial_2):
@@ -83,6 +86,7 @@ class Polynomial(list):
         :return: Returns true if the polynomials are equal and false otherwise.
         """
         polynomial_1, polynomial_2 = Polynomial.strip_zeros_l([polynomial_1, polynomial_2])
+
         if polynomial_1 == polynomial_2:
             return True
         return False
