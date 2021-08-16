@@ -91,6 +91,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Fast Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="polynomial.html">Polynomial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roots_of_unity.html">Roots of Unity</a></li>
 </ul>
 
             
@@ -158,8 +159,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="fast-fourier-transform">
-<h1>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-fft.fft">
+<span id="fast-fourier-transform"></span><h1>Fast Fourier Transform<a class="headerlink" href="#module-fft.fft" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="fft.fft.fft">
+<span class="sig-prename descclassname"><span class="pre">fft.fft.</span></span><span class="sig-name descname"><span class="pre">fft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="polynomial.html#fft.polynomial.Polynomial" title="fft.polynomial.Polynomial"><span class="pre">fft.polynomial.Polynomial</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">roots_of_unity</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="roots_of_unity.html#fft.roots_of_unity.NthRootsOfUnity" title="fft.roots_of_unity.NthRootsOfUnity"><span class="pre">fft.roots_of_unity.NthRootsOfUnity</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#fft.fft.fft" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a simple implementation of the Fast Fourier Transform (FFT).</p>
+<p>The FFT is an efficient algorithm for the Discrete Fourier Transform. This implementation converts polynomials
+from a coefficient representation to a sample representation.</p>
+<p>What makes the FFT ‘fast’ is the clever choice of inputs used to evaluate the polynomial, at two points,
+almost simultaneously. This combined with the fact that polynomials can be split into even and odd pairs in the
+following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">e</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">o</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>allows to create a divide and conquer algorithm that can evaluate a degree <code class="docutils literal notranslate"><span class="pre">n</span></code> polynomial at, at least, <code class="docutils literal notranslate"><span class="pre">n</span></code> points in
+<code class="docutils literal notranslate"><span class="pre">O(n*log(n))</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="fft.fft.smallest_power_of_two_not_less_than">
+<span class="sig-prename descclassname"><span class="pre">fft.fft.</span></span><span class="sig-name descname"><span class="pre">smallest_power_of_two_not_less_than</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fft.fft.smallest_power_of_two_not_less_than" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does what it says on the tin.</p>
+</dd></dl>
+
 </div>
 
 

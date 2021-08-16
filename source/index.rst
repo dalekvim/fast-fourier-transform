@@ -12,6 +12,7 @@ Welcome to Fast Fourier Transform's documentation!
 
    fft
    polynomial
+   roots_of_unity
 
 
 Indices and tables

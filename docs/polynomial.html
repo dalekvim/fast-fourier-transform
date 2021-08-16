@@ -41,6 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Roots of Unity" href="roots_of_unity.html" />
     <link rel="prev" title="Fast Fourier Transform" href="fft.html" /> 
 </head>
 
@@ -90,6 +91,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="fft.html">Fast Fourier Transform</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Polynomial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roots_of_unity.html">Roots of Unity</a></li>
 </ul>
 
             
@@ -159,19 +161,22 @@
             
   <div class="section" id="module-fft.polynomial">
 <span id="polynomial"></span><h1>Polynomial<a class="headerlink" href="#module-fft.polynomial" title="Permalink to this headline">¶</a></h1>
-<p>This file contains the Polynomial class which represents polynomials with the a list of coefficients.</p>
+<p>This file contains the Polynomial class, created to quick and easy access to polynomials.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fft.polynomial.Polynomial">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fft.polynomial.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class represents polynomials as a list.</p>
-<p>This class has been designed for quick and easy access to polynomials:</p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fft.polynomial.</span></span><span class="sig-name descname"><span class="pre">Polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class represents polynomials as a list of coefficients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fft.Polynomial</span> <span class="k">as</span> <span class="nn">Poly</span>
 
 <span class="c1"># f(x) = 1 + 2x + xx</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="c1"># The f is callable and will evaluate the polynomial at the input.</span>
-<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Returns 1 + 2*3 + 3*3 = 16.</span>
+<span class="c1"># The f is callable and will evaluate the polynomial at the input value.</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mf">16.</span>
 </pre></div>
 </div>
 <dl class="simple">
@@ -190,15 +195,17 @@
 <dt class="sig sig-object py" id="fft.polynomial.Polynomial.add">
 <em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polynomial_1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polynomial_2</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#fft.polynomial.Polynomial.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds together two input polynomials and returns the result.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Example</dt>
-<dd class="field-odd"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1 + 2x) + (3 + 2x + 5xx) = 4 + 4x + 5xx</span>
-<span class="n">Polynomial</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1 + 2x) + (3 + 2x + 5xx) = 4 + 4x + 5xx</span>
+<span class="n">Poly</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The sum of the two polynomials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The sum of the two polynomials.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -227,6 +234,13 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fft.polynomial.Polynomial.evens">
+<span class="sig-name descname"><span class="pre">evens</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial.evens" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns a polynomial whose coefficients correspond to the even powers of x of the polynomial it is
+run on.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fft.polynomial.Polynomial.horners_rule">
 <span class="sig-name descname"><span class="pre">horners_rule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">complex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">complex</span></span></span><a class="headerlink" href="#fft.polynomial.Polynomial.horners_rule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates this polynomial using Horner’s Rule.</p>
@@ -240,6 +254,13 @@ polynomial time complexity.</p>
 <dd class="field-even"><p>The polynomial evaluated at the input.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fft.polynomial.Polynomial.odds">
+<span class="sig-name descname"><span class="pre">odds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fft.polynomial.Polynomial.odds" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns a polynomial whose coefficients correspond to the run powers of x of the polynomial it is
+run on.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -277,6 +298,7 @@ polynomial time complexity.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="roots_of_unity.html" class="btn btn-neutral float-right" title="Roots of Unity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="fft.html" class="btn btn-neutral float-left" title="Fast Fourier Transform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
